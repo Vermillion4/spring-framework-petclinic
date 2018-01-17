@@ -30,7 +30,7 @@ public class ValidatorTests {
 
         LocaleContextHolder.setLocale(Locale.ENGLISH);
         Person person = new Person();
-        person.setFirstName("cat");
+        person.setFirstName("");
         person.setLastName("smith");
 
         Validator validator = createValidator();
@@ -38,7 +38,7 @@ public class ValidatorTests {
 
         assertThat(constraintViolations.size()).isEqualTo(1);
         ConstraintViolation<Person> violation = constraintViolations.iterator().next();
-        assertThat(violation.getPropertyPath().toString()).isEqualTo("firstMame");
+        assertThat(violation.getPropertyPath().toString()).isEqualTo("firstName");
         assertThat(violation.getMessage()).isEqualTo("may not be empty");
     }
 
